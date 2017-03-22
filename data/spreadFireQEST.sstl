@@ -1,0 +1,49 @@
+const dsafe = 0;
+const delta = 5;
+const d1 = 0;
+const d2 = 1;
+const t = 0;
+const dt = 5;
+const ds = 0;
+const deltas = 17;
+const dp = 0;
+const deltap = 17;
+const tf = 0;
+const dtf = 5;
+const dtf2 = 10;
+const tl = 0;
+const dtl = 10;
+const tpa = 0;
+const dtpa = 10;
+
+variable D;		
+variable B;
+variable EX;
+variable S;
+variable H;
+variable T;
+variable L;
+variable P;
+variable PA;
+variable WS;
+
+	
+formula fire = {B>0};
+formula spreadFire = \F[tf,dtf] fire;
+formula presentS = {S>0};
+formula presentP = {P>0};
+formula presentPA = {PA>0};
+formula presentH = {H>0};
+formula presentT = {T>0};
+formula presentL = {L>0};
+formula somewhereS = <<>>[ds,ds+deltas]presentS;
+formula somewhereP = <<>>[dp,dp+deltap]presentP;
+
+formula closeSP = somewhereS & somewhereP;
+
+formula noD = presentS | presentP | presentPA | fire | presentH | presentT | presentL;
+formula closeSPNoD = closeSP & noD;
+
+formula spreadFire = \F[tf,dtf] fire;
+
+formula spreadFire2 = \F[tf,dtf2] fire;

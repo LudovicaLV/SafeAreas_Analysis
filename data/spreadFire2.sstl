@@ -1,0 +1,16 @@
+const Tend = 100;
+const d1 = 1;
+const d2 = 8;
+const t = 0;
+const dt = 29;
+	
+variable T;
+variable L;			
+variable B;
+variable EX;
+	
+formula fire = {B>0};	
+
+formula contain = {B>0}\S[d1,d2]{B<1}
+
+formula global = \G[t,dt]contain;

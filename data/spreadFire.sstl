@@ -1,0 +1,30 @@
+const dspread = 2;
+const delta = 2;
+const tspread = 2;
+const gamma = 2;
+const tspreadAll = 0;
+const gammaAll = 2;
+const init1 = 0;
+const end1 = 5;
+const init2 = 3;
+const end2 = 3;		
+			
+variable I;		
+variable B;
+variable EX;
+variable IT;
+variable H;
+	
+formula fire = {B>0};		
+formula spreadFire = \F[tspread,tspread+gamma] fire;
+
+formula temp = {H>0};		
+formula AllTemp = \F[tspreadAll,tspreadAll+gammaAll] temp;
+
+formula AllFire = \F[tspreadAll,tspreadAll+gammaAll] fire;
+
+formula distFire = <<>>[ dspread , dspread+delta] fire;
+formula distspreadFire = \F[tspread ,tspread+gamma] distFire;
+
+formula spread2 = \F[init1, init1 + end1] fire;		
+formula spread1 = \F[init2, init2 + end2] fire;
